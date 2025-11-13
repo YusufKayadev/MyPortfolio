@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyPortfolio.DAL.Context;
+using System.Linq;
 
 namespace MyPortfolio.ViewComponents
 {
-    public class _FeatureComonentPartial : ViewComponent
+    public class _SocialMediaComponentPartial : ViewComponent
     {
-        MyPortfolioContext portfolioContext = new MyPortfolioContext();
+        MyPortfolioContext context = new MyPortfolioContext();
         public IViewComponentResult Invoke()
-        {
-            var values = portfolioContext.Feature.ToList();
+        {   var values = context.SocialMedias.ToList();
             return View(values);
         }
     }

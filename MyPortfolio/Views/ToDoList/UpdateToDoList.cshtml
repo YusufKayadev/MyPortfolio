@@ -1,0 +1,40 @@
+﻿@model ToDoList
+
+@{
+    ViewData["Title"] = "UpdateToDoList";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="container-fluid">
+	<h4 class="page-title">Yapılacaklar</h4>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title">Yapılacaklar Listesi</div>
+				</div>
+				<div class="card-body">
+
+					<form method="post">
+						<input type="hidden" asp-for="ToDoListId" />
+						<label>Başlık</label>
+						<input type="text" asp-for="Title" class="form-control" />
+						<br />
+						<label>Resim</label>
+						<input type="text" asp-for="ImageURL" class="form-control" />
+						<br />
+						<label>Tarih Aralığı</label>
+						<input type="text" asp-for="Date" class="form-control" />
+						<br />
+						<label>Açıklama</label>
+						<textarea rows="4" asp-for="Status" class="form-control"></textarea>
+						<br />
+						<button class="btn btn-warning">Yapılacakları Güncelle</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

@@ -1,4 +1,4 @@
-﻿ 
+﻿
 @{
     Layout = null;
 }
@@ -9,21 +9,22 @@
 
 <body id="top">
 
-    <!-- headerw
+    <!-- headerw>
     ================================================== -->
     @await Component.InvokeAsync("_NavbarComponentPartial")
     <!-- end s-header -->
     <!-- home
     ================================================== -->
-	@await Component.InvokeAsync("_FeatureComonentPartial")
+	@await Component.InvokeAsync("_FeatureComponentPartial")
     <!-- end s-home -->
+	@await Component.InvokeAsync("_SocialMediaComponentPartial")
     <!-- about
     ================================================== -->
     @await Component.InvokeAsync("_AboutComponentPartial")
     <!-- end about -->
     <!-- works
     ================================================== -->
-	@await Component.InvokeAsync("_PortfolioComponentPartial")W
+	@await Component.InvokeAsync("_PortfolioComponentPartial")
     <!-- end works -->
     <!-- testimonials
     ================================================== -->

@@ -1,5 +1,8 @@
-﻿namespace MyPortfolio.DAL.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MyPortfolio.DAL.Entities
 {
+    [Table("Features")]
     public class Feature
     {
         public int FeatureId { get; set; }

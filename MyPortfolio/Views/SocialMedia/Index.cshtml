@@ -1,0 +1,43 @@
+﻿@model List<SocialMedia>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Layout/Index.cshtml";
+	int count = 0;
+}
+
+<div class="container-fluid">
+	<h4 class="page-title">Sosyal Medya Hesapları</h4>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Sosyal Medya Adı</th>
+							<th scope="col">Kullanıcı Adı</th>
+							<th scope="col">İcon</th>
+							<th scope="col">Sil</th>
+							<th scope="col">Güncelle</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							count++;
+							<tr>
+								<td>@count</td>
+								<td>@item.Title</td>
+								<td>@item.Url</td>
+								<td>@item.Icon</td>
+								<td><a href="/SocialMedia/DeleteSocialMedia/@item.SocialMediaId" class="btn btn-danger">Sil</a></td>
+								<td><a href="/SocialMedia/UpdateSocialMedia/@item.SocialMediaId" class="btn btn-success">Güncelle</a></td>
+							</tr>
+						}
+					</tbody>
+				</table>
+				<a href="~/SocialMedia/CreateSocialMedia/" class="btn btn-primary">Yeni Hesap Ekle</a>
+			</div>
+		</div>
+	</div>
+</div>

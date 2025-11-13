@@ -1,0 +1,52 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using MyPortfolio.DAL.Context;
+using MyPortfolio.DAL.Entities;
+
+namespace MyPortfolio.Controllers
+{
+    public class SkillController : Controller
+    {
+        MyPortfolioContext context = new MyPortfolioContext();
+        public IActionResult GetSkill()
+        {
+            var values = context.Skills.ToList();
+            return View(values);
+        }
+
+        [HttpGet]
+        public IActionResult CreateSkill()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateSkill(Skill skill)
+        {
+            context.Skills.Add(skill);
+            context.SaveChanges();
+            return RedirectToAction("GetSkill");
+        }
+
+        public IActionResult DeleteSkill(int id)
+        {
+            var values = context.Skills.Find(id);
+            context.Skills.Remove(values);
+            context.SaveChanges();
+            return RedirectToAction("GetSkill");
+        }
+
+        [HttpGet]
+        public IActionResult UpdateSkill(int id)
+        {
+            var value = context.Skills.Find(id);
+            return View(value);
+        }
+        [HttpPost]
+        public IActionResult UpdateSkill(Skill skill)
+        {
+            var value = context.Skills.Update(skill);
+            context.SaveChanges();
+            return RedirectToAction("GetSkill");
+        }
+
+    }
+}

@@ -12,8 +12,8 @@ using MyPortfolio.DAL.Context;
 namespace MyPortfolio.Migrations
 {
     [DbContext(typeof(MyPortfolioContext))]
-    [Migration("20251024090650_mg1")]
-    partial class mg1
+    [Migration("20251112103954_mig2")]
+    partial class mig2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -137,7 +137,7 @@ namespace MyPortfolio.Migrations
 
                     b.HasKey("FeatureId");
 
-                    b.ToTable("Feature");
+                    b.ToTable("Features");
                 });
 
             modelBuilder.Entity("MyPortfolio.DAL.Entities.Message", b =>
@@ -261,21 +261,52 @@ namespace MyPortfolio.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TestimonialId"), 1L, 1);
 
-                    b.Property<int>("Description")
-                        .HasColumnType("int");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ImageUrl")
-                        .HasColumnType("int");
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NameSurname")
-                        .HasColumnType("int");
+                    b.Property<string>("NameSurname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Title")
-                        .HasColumnType("int");
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TestimonialId");
 
                     b.ToTable("Testimonials");
+                });
+
+            modelBuilder.Entity("MyPortfolio.DAL.Entities.ToDoList", b =>
+                {
+                    b.Property<int>("ToDoListId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ToDoListId"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ToDoListId");
+
+                    b.ToTable("ToDoLists");
                 });
 #pragma warning restore 612, 618
         }
